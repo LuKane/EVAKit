@@ -14,7 +14,7 @@ import AdSupport
 
 extension UIDevice: EVACompatible {}
 
-/// MARK baseInfo
+/// MARK BaseInfo
 extension EVAWrapper where Base: UIDevice {
     
     /// current device name
