@@ -21,23 +21,10 @@ extension EVAWrapper where Base: UIDevice {
     static func deviceName() -> String {
         Base.current.name
     }
-    /// current device name
-    /// - Returns: device'name
-    /// - Note: iPhone 6s
-    func deviceName() -> String {
-        Base.current.name
-    }
-    
     /// current device system version
     /// - Returns: system version
     /// - Note: 9.0
     static func deviceSystemVersion() -> String {
-        Base.current.systemVersion
-    }
-    /// current device system version
-    /// - Returns: system version
-    /// - Note: 9.0
-    func deviceSystemVersion() -> String {
         Base.current.systemVersion
     }
     
@@ -45,15 +32,6 @@ extension EVAWrapper where Base: UIDevice {
     /// - Returns: version
     /// - Note: 1.0.0
     static func deviceAppVersion() -> String? {
-        guard let info = Bundle.main.infoDictionary else {
-            return nil
-        }
-        return info["CFBundleShortVersionString"] as? String
-    }
-    /// current your application version
-    /// - Returns: version
-    /// - Note: 1.0.0
-    func deviceAppVersion() -> String? {
         guard let info = Bundle.main.infoDictionary else {
             return nil
         }
@@ -69,29 +47,11 @@ extension EVAWrapper where Base: UIDevice {
         }
         return info["CFBundleVersion"] as? String
     }
-    /// current your application build version
-    /// - Returns: version
-    /// - Note: 1
-    func deviceAppBuildVersion() -> String? {
-        guard let info = Bundle.main.infoDictionary else {
-            return nil
-        }
-        return info["CFBundleVersion"] as? String
-    }
     
     /// current App name
     /// - Returns: app name
     /// - Note: try get display name ,otherwise bundle name 
     static func deviceAppName() -> String? {
-        guard let info = Bundle.main.infoDictionary else {
-            return nil
-        }
-        return (info["CFBundleDisplayName"] ?? info["CFBundleName"]) as? String
-    }
-    /// current App name
-    /// - Returns: app name
-    /// - Note: try get display name ,otherwise bundle name 
-    func deviceAppName() -> String? {
         guard let info = Bundle.main.infoDictionary else {
             return nil
         }
@@ -106,15 +66,7 @@ extension EVAWrapper where Base: UIDevice {
         }
         return false
     }
-    /// current device is jail broken
-    /// - Returns: is nor not
-    func deviceIsJailBroken() -> Bool {
-        if Self.isJailBreak1() {
-            return true
-        }
-        return false
-    }
-    
+
     private static func isJailBreak1() -> Bool {
         let jailbreak_tool_paths = [
             "/Applications/Cydia.app",
@@ -159,46 +111,9 @@ extension EVAWrapper where Base: UIDevice {
         }
     }
     
-    /// device camera auth check
-    /// - Parameter block: callBack
-    func deviceCameraAuth(block: @escaping (Bool) -> ()) {
-        let auth = AVCaptureDevice.authorizationStatus(for: .video)
-        switch auth {
-            case .authorized: 
-                block(true)
-            case .notDetermined:
-                AVCaptureDevice.requestAccess(for: .video) { k in
-                    DispatchQueue.main.async {
-                        block(k)
-                    }
-                }
-            default:
-                block(false)
-        }
-    }
-    
     /// device album auth check
     /// - Parameter block: callBack
     static func deviceAlbumAuth(block: @escaping (Bool) -> ()) {
-        let auth = PHPhotoLibrary.authorizationStatus()
-        switch auth {
-            case .authorized:
-                block(true)
-            case .notDetermined:
-                PHPhotoLibrary.requestAuthorization { k in
-                    if k == .authorized {
-                        block(true)
-                    }else {
-                        block(false)
-                    }
-                }
-            default:
-                block(false)
-        }
-    }
-    /// device album auth check
-    /// - Parameter block: callBack
-    func deviceAlbumAuth(block: @escaping (Bool) -> ()) {
         let auth = PHPhotoLibrary.authorizationStatus()
         switch auth {
             case .authorized:
