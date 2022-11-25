@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		79322D80293116C500100D85 /* Gesture+EVA.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79322D7F293116C500100D85 /* Gesture+EVA.swift */; };
 		79B887582930BFB400BD54A0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79B887572930BFB400BD54A0 /* AppDelegate.swift */; };
 		79B8875C2930BFB400BD54A0 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79B8875B2930BFB400BD54A0 /* ViewController.swift */; };
 		79B8875F2930BFB400BD54A0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 79B8875D2930BFB400BD54A0 /* Main.storyboard */; };
@@ -38,6 +39,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		79322D7F293116C500100D85 /* Gesture+EVA.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Gesture+EVA.swift"; sourceTree = "<group>"; };
 		79B887542930BFB400BD54A0 /* EVAKit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EVAKit.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		79B887572930BFB400BD54A0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		79B8875B2930BFB400BD54A0 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -80,6 +82,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		79322D7E293116B200100D85 /* Utility */ = {
+			isa = PBXGroup;
+			children = (
+				79322D7F293116C500100D85 /* Gesture+EVA.swift */,
+			);
+			path = Utility;
+			sourceTree = "<group>";
+		};
 		79B8874B2930BFB400BD54A0 = {
 			isa = PBXGroup;
 			children = (
@@ -136,6 +146,7 @@
 			children = (
 				79B887902930C6D800BD54A0 /* EVA.swift */,
 				79B887882930C34600BD54A0 /* Extension */,
+				79322D7E293116B200100D85 /* Utility */,
 			);
 			path = EVAKit;
 			sourceTree = "<group>";
@@ -284,6 +295,7 @@
 				79B8878B2930C3A900BD54A0 /* Device+EVA.swift in Sources */,
 				79B8875C2930BFB400BD54A0 /* ViewController.swift in Sources */,
 				79B887952930E0F800BD54A0 /* Color+EVA.swift in Sources */,
+				79322D80293116C500100D85 /* Gesture+EVA.swift in Sources */,
 				79B887582930BFB400BD54A0 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
