@@ -460,6 +460,7 @@
 				DEVELOPMENT_TEAM = RQ584L4S8V;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = EVAKit/Info.plist;
+				INFOPLIST_KEY_NSUserTrackingUsageDescription = 123123213;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -490,6 +491,7 @@
 				DEVELOPMENT_TEAM = RQ584L4S8V;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = EVAKit/Info.plist;
+				INFOPLIST_KEY_NSUserTrackingUsageDescription = 123123213;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;

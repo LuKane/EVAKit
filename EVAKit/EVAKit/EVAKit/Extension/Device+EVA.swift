@@ -9,6 +9,8 @@ import Foundation
 import UIKit
 import AVFoundation
 import Photos
+import AppTrackingTransparency
+import AdSupport
 
 extension UIDevice: EVACompatible {}
 
@@ -18,20 +20,20 @@ extension EVAWrapper where Base: UIDevice {
     /// current device name
     /// - Returns: device'name
     /// - Note: iPhone 6s
-    static func deviceName() -> String {
+    public static func deviceName() -> String {
         Base.current.name
     }
     /// current device system version
     /// - Returns: system version
     /// - Note: 9.0
-    static func deviceSystemVersion() -> String {
+    public static func deviceSystemVersion() -> String {
         Base.current.systemVersion
     }
     
     /// current your application version
     /// - Returns: version
     /// - Note: 1.0.0
-    static func deviceAppVersion() -> String? {
+    public static func deviceAppVersion() -> String? {
         guard let info = Bundle.main.infoDictionary else {
             return nil
         }
@@ -41,7 +43,7 @@ extension EVAWrapper where Base: UIDevice {
     /// current your application build version
     /// - Returns: version
     /// - Note: 1
-    static func deviceAppBuildVersion() -> String? {
+    public static func deviceAppBuildVersion() -> String? {
         guard let info = Bundle.main.infoDictionary else {
             return nil
         }
@@ -51,7 +53,7 @@ extension EVAWrapper where Base: UIDevice {
     /// current App name
     /// - Returns: app name
     /// - Note: try get display name ,otherwise bundle name 
-    static func deviceAppName() -> String? {
+    public static func deviceAppName() -> String? {
         guard let info = Bundle.main.infoDictionary else {
             return nil
         }
@@ -60,7 +62,7 @@ extension EVAWrapper where Base: UIDevice {
     
     /// current device is jail broken
     /// - Returns: is nor not
-    static func deviceIsJailBroken() -> Bool {
+    public static func deviceIsJailBroken() -> Bool {
         if isJailBreak1() {
             return true
         }
@@ -95,39 +97,69 @@ extension EVAWrapper where Base: UIDevice {
     
     /// device camera auth check
     /// - Parameter block: callBack
-    static func deviceCameraAuth(block: @escaping (Bool) -> ()) {
+    public static func deviceCameraAuth(block: @escaping (Bool) -> ()) {
         let auth = AVCaptureDevice.authorizationStatus(for: .video)
         switch auth {
             case .authorized: 
-                block(true)
+                DispatchQueue.main.async { block(true) }
             case .notDetermined:
                 AVCaptureDevice.requestAccess(for: .video) { k in
-                    DispatchQueue.main.async {
-                        block(k)
-                    }
+                    DispatchQueue.main.async { block(k) }
                 }
             default:
-                block(false)
+                DispatchQueue.main.async { block(false) }
         }
     }
     
     /// device album auth check
     /// - Parameter block: callBack
-    static func deviceAlbumAuth(block: @escaping (Bool) -> ()) {
+    public static func deviceAlbumAuth(block: @escaping (Bool) -> ()) {
         let auth = PHPhotoLibrary.authorizationStatus()
         switch auth {
             case .authorized:
-                block(true)
+                DispatchQueue.main.async { block(true) }
             case .notDetermined:
                 PHPhotoLibrary.requestAuthorization { k in
-                    if k == .authorized {
-                        block(true)
-                    }else {
-                        block(false)
+                    DispatchQueue.main.async {
+                        if k == .authorized {
+                            block(true)
+                        }else {
+                            block(false)
+                        }
                     }
                 }
             default:
-                block(false)
+                DispatchQueue.main.async { block(false) }
+        }
+    }
+    
+    /// device track auth check
+    /// - Parameter block: callBack
+    public static func deviceTrackAuth(block: @escaping (Bool, String?) -> ()) {
+        if #available(iOS 14, *) {
+            ATTrackingManager.requestTrackingAuthorization { auth in
+                if auth == .authorized {
+                    let idfa = ASIdentifierManager.shared().advertisingIdentifier.uuidString
+                    DispatchQueue.main.async {
+                        block(true, idfa)
+                    }
+                }else if auth == .notDetermined {
+                    DispatchQueue.main.async {
+                        block(true, nil)
+                    }
+                }
+            }
+        }else {
+            if ASIdentifierManager.shared().isAdvertisingTrackingEnabled {
+                let idfa = ASIdentifierManager.shared().advertisingIdentifier.uuidString
+                DispatchQueue.main.async {
+                    block(true, idfa)
+                }
+            }else {
+                DispatchQueue.main.async {
+                    block(false, nil)
+                }
+            }
         }
     }
 }
