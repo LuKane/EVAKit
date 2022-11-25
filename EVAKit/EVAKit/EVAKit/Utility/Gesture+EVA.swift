@@ -12,28 +12,13 @@ public enum EVAGestureRecognizerState {
     case began, moved, ended, cancelled
 }
 
-protocol EVAGestureRecognizerProtocol {
-    var startPoint: CGPoint {
-        get
-    }
-    var lastPoint: CGPoint {
-        get
-    }
-    var currentPoint: CGPoint {
-        get
-    }
-}
-
-class EVAGestureRecognizer: UIGestureRecognizer, EVAGestureRecognizerProtocol {
+class EVAGestureRecognizer: UIGestureRecognizer {
     
     public typealias EVAGestureAction = (_ gesture: EVAGestureRecognizer, _ state: EVAGestureRecognizerState) -> ()
     
-    var startPoint: CGPoint = .zero
-    
-    var lastPoint: CGPoint = .zero
-    
-    var currentPoint: CGPoint = .zero
-    
+    internal var startPoint: CGPoint = .zero
+    internal var lastPoint: CGPoint = .zero
+    internal var currentPoint: CGPoint = .zero
     private var actionBlock: EVAGestureAction?
     
     open func gestureActionBlock(action: @escaping EVAGestureAction) {
