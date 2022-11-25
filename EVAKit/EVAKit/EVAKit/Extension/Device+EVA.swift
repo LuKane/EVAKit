@@ -7,9 +7,12 @@
 
 import Foundation
 import UIKit
+import AVFoundation
+import Photos
 
 extension UIDevice: EVACompatible {}
 
+/// MARK baseInfo
 extension EVAWrapper where Base: UIDevice {
     
     /// current device name
@@ -132,5 +135,84 @@ extension EVAWrapper where Base: UIDevice {
             return true
         }
         return false
+    }
+}
+
+/// MARK Auth
+extension EVAWrapper where Base: UIDevice {
+    
+    /// device camera auth check
+    /// - Parameter block: callBack
+    static func deviceCameraAuth(block: @escaping (Bool) -> ()) {
+        let auth = AVCaptureDevice.authorizationStatus(for: .video)
+        switch auth {
+            case .authorized: 
+                block(true)
+            case .notDetermined:
+                AVCaptureDevice.requestAccess(for: .video) { k in
+                    DispatchQueue.main.async {
+                        block(k)
+                    }
+                }
+            default:
+                block(false)
+        }
+    }
+    
+    /// device camera auth check
+    /// - Parameter block: callBack
+    func deviceCameraAuth(block: @escaping (Bool) -> ()) {
+        let auth = AVCaptureDevice.authorizationStatus(for: .video)
+        switch auth {
+            case .authorized: 
+                block(true)
+            case .notDetermined:
+                AVCaptureDevice.requestAccess(for: .video) { k in
+                    DispatchQueue.main.async {
+                        block(k)
+                    }
+                }
+            default:
+                block(false)
+        }
+    }
+    
+    /// device album auth check
+    /// - Parameter block: callBack
+    static func deviceAlbumAuth(block: @escaping (Bool) -> ()) {
+        let auth = PHPhotoLibrary.authorizationStatus()
+        switch auth {
+            case .authorized:
+                block(true)
+            case .notDetermined:
+                PHPhotoLibrary.requestAuthorization { k in
+                    if k == .authorized {
+                        block(true)
+                    }else {
+                        block(false)
+                    }
+                }
+            default:
+                block(false)
+        }
+    }
+    /// device album auth check
+    /// - Parameter block: callBack
+    func deviceAlbumAuth(block: @escaping (Bool) -> ()) {
+        let auth = PHPhotoLibrary.authorizationStatus()
+        switch auth {
+            case .authorized:
+                block(true)
+            case .notDetermined:
+                PHPhotoLibrary.requestAuthorization { k in
+                    if k == .authorized {
+                        block(true)
+                    }else {
+                        block(false)
+                    }
+                }
+            default:
+                block(false)
+        }
     }
 }

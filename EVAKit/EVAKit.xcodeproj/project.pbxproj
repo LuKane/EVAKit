@@ -141,17 +141,9 @@
 		79B887882930C34600BD54A0 /* Extension */ = {
 			isa = PBXGroup;
 			children = (
-				79B887892930C34600BD54A0 /* Device */,
-			);
-			path = Extension;
-			sourceTree = "<group>";
-		};
-		79B887892930C34600BD54A0 /* Device */ = {
-			isa = PBXGroup;
-			children = (
 				79B8878A2930C3A900BD54A0 /* Device+EVA.swift */,
 			);
-			path = Device;
+			path = Extension;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
