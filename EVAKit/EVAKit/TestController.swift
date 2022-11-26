@@ -14,13 +14,9 @@ class TestController: UIViewController {
         super.viewDidLoad()
         view.backgroundColor = UIColor.green
         
-        timerID = EVATimer.timer(delay: 5, time: 3, mainThread: true, repeats: true, block: { 
-            print("timer run")
-        })
     }
     
     deinit {
-        print("deinit")
-        EVATimer.cancelEVATime(timerID: timerID)
+        
     }
 }

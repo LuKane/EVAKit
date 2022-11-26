@@ -10,7 +10,17 @@ import Foundation
 fileprivate var EVATimeDic: Dictionary<String, DispatchSourceTimer> = [String: DispatchSourceTimer]()
 fileprivate var EVATimeSemaphore: DispatchSemaphore = DispatchSemaphore.init(value: 1)
 
-class EVATimer {
+extension Timer: EVACompatible {}
+
+extension EVAWrapper where Base: Timer {
+    /// Timer maker
+    /// - Parameters:
+    ///   - seconds: delay seconds
+    ///   - timeInterval: timeInterval
+    ///   - mainThread: is main Thread? main : global
+    ///   - repeats: repeat or not
+    ///   - block: callBack
+    /// - Returns: timer ID
     static func timer(delay seconds: Float = 0.0, time timeInterval: Float, mainThread: Bool = true, repeats: Bool = true, block: (()->())?) -> String? {
         if block == nil { return nil }
         if seconds < 0 || timeInterval <= 0 { return nil }
@@ -46,6 +56,8 @@ class EVATimer {
         return EVATimeID
     }
     
+    /// cancel timer run with timerID
+    /// - Parameter timerID: timerID
     static func cancelEVATime(timerID: String?) {
         guard let timerID = timerID else {
             return
