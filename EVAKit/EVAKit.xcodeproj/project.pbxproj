@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		793027882931977C00E14C26 /* TestController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 793027872931977C00E14C26 /* TestController.swift */; };
+		7930278B2931AE7600E14C26 /* Timer+EVA.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7930278A2931AE7600E14C26 /* Timer+EVA.swift */; };
 		79322D80293116C500100D85 /* Gesture+EVA.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79322D7F293116C500100D85 /* Gesture+EVA.swift */; };
 		79B887582930BFB400BD54A0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79B887572930BFB400BD54A0 /* AppDelegate.swift */; };
 		79B8875C2930BFB400BD54A0 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79B8875B2930BFB400BD54A0 /* ViewController.swift */; };
@@ -39,6 +41,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		793027872931977C00E14C26 /* TestController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestController.swift; sourceTree = "<group>"; };
+		7930278A2931AE7600E14C26 /* Timer+EVA.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Timer+EVA.swift"; sourceTree = "<group>"; };
 		79322D7F293116C500100D85 /* Gesture+EVA.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Gesture+EVA.swift"; sourceTree = "<group>"; };
 		79B887542930BFB400BD54A0 /* EVAKit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EVAKit.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		79B887572930BFB400BD54A0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -86,6 +90,7 @@
 			isa = PBXGroup;
 			children = (
 				79322D7F293116C500100D85 /* Gesture+EVA.swift */,
+				7930278A2931AE7600E14C26 /* Timer+EVA.swift */,
 			);
 			path = Utility;
 			sourceTree = "<group>";
@@ -116,6 +121,7 @@
 				79B887872930C32700BD54A0 /* EVAKit */,
 				79B887572930BFB400BD54A0 /* AppDelegate.swift */,
 				79B8875B2930BFB400BD54A0 /* ViewController.swift */,
+				793027872931977C00E14C26 /* TestController.swift */,
 				79B8875D2930BFB400BD54A0 /* Main.storyboard */,
 				79B887602930BFB600BD54A0 /* Assets.xcassets */,
 				79B887622930BFB600BD54A0 /* LaunchScreen.storyboard */,
@@ -293,7 +299,9 @@
 			files = (
 				79B887912930C6D800BD54A0 /* EVA.swift in Sources */,
 				79B8878B2930C3A900BD54A0 /* Device+EVA.swift in Sources */,
+				7930278B2931AE7600E14C26 /* Timer+EVA.swift in Sources */,
 				79B8875C2930BFB400BD54A0 /* ViewController.swift in Sources */,
+				793027882931977C00E14C26 /* TestController.swift in Sources */,
 				79B887952930E0F800BD54A0 /* Color+EVA.swift in Sources */,
 				79322D80293116C500100D85 /* Gesture+EVA.swift in Sources */,
 				79B887582930BFB400BD54A0 /* AppDelegate.swift in Sources */,

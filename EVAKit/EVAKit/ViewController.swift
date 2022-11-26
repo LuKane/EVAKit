@@ -11,11 +11,10 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = UIColor.orange
+    }
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        let vc = TestController()
         
-        let gesture = EVAGestureRecognizer.init()
-        gesture.gestureActionBlock { gesture, state in
-            
-        }
-        view.addGestureRecognizer(gesture)
+        navigationController?.pushViewController(vc, animated: true)
     }
 }

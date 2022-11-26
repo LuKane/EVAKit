@@ -12,7 +12,7 @@ public enum EVAGestureRecognizerState {
     case began, moved, ended, cancelled
 }
 
-class EVAGestureRecognizer: UIGestureRecognizer {
+public class EVAGestureRecognizer: UIGestureRecognizer {
     
     public typealias EVAGestureAction = (_ gesture: EVAGestureRecognizer, _ state: EVAGestureRecognizerState) -> ()
     
