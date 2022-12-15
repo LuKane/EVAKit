@@ -15,11 +15,11 @@ public struct EVAWrapper<Base> {
 public protocol EVACompatible: AnyObject {}
 
 extension EVACompatible {
-    public var eva: EVAWrapper<Self> { 
-        set {} 
+    public var vk: EVAWrapper<Self> { 
+        set {}
         get { EVAWrapper(self) }
     }
-    public static var eva: EVAWrapper<Self>.Type {
+    public static var vk: EVAWrapper<Self>.Type {
         set {}
         get { EVAWrapper<Self>.self }
     }
